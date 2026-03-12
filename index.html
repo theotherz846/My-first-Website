@@ -1,127 +1,279 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Premium Demo Site</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-    nav {
-      position: fixed;
-      top:0; left:0; right:0;
-      background: rgba(255,255,255,0.95);
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:20px 60px;
-      box-shadow:0 2px 10px rgba(0,0,0,0.05);
-      transition: padding 0.3s ease, background 0.3s ease;
-      z-index:100;
-    }
-    nav.shrink { padding:10px 60px; background: rgba(255,255,255,1); }
-    nav .logo { font-weight:700; font-size:24px; }
-    nav ul { list-style:none; display:flex; gap:30px; }
-    nav ul li a {
-      text-decoration:none; color:#000; font-weight:500;
-      position:relative; transition: color 0.3s;
-    }
-    nav ul li a::after {
-      content:''; position:absolute; left:0; bottom:-5px; width:0; height:2px; background:#000; transition:width 0.3s;
-    }
-    nav ul li a:hover::after { width:100%; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Options</title>
 
-    section {
-      min-height:100vh; display:flex; justify-content:center; align-items:center;
-      text-align:center; padding:50px; opacity:0; transform:translateY(30px);
-      transition: all 1s ease;
-    }
-    section.visible { opacity:1; transform:translateY(0); }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-    /* Section colors */
-    #home { background: linear-gradient(135deg,#ff9a9e,#fad0c4); color:#fff; }
-    #products { background: linear-gradient(135deg,#a18cd1,#fbc2eb); color:#fff; }
-    #about { background: linear-gradient(135deg,#fbc2eb,#a6c1ee); color:#fff; }
-    #contact { background: linear-gradient(135deg,#89f7fe,#66a6ff); color:#fff; }
+<style>
 
-    section h1 { font-size:48px; margin-bottom:20px; }
-    section p { font-size:20px; max-width:600px; margin:auto; }
-    .btn {
-      display:inline-block; margin-top:30px;
-      padding:12px 30px; border:2px solid #fff; color:#fff; border-radius:25px;
-      text-decoration:none; font-weight:600; transition:all 0.3s;
-    }
-    .btn:hover { background:#fff; color:#000; }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-    @media(max-width:768px){
-      nav { padding:15px 20px; }
-      nav ul { gap:15px; }
-      section h1 { font-size:36px; }
-    }
-  </style>
+body{
+font-family:'Inter',sans-serif;
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:white;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+/* HEADER */
+
+.hero{
+text-align:center;
+padding:80px 20px 40px 20px;
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:10px;
+}
+
+.hero p{
+opacity:0.8;
+font-size:18px;
+}
+
+/* TIER BUTTONS */
+
+.tier-buttons{
+display:flex;
+gap:15px;
+margin-top:40px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.tier-buttons button{
+padding:12px 25px;
+border-radius:30px;
+border:none;
+font-weight:600;
+cursor:pointer;
+background:rgba(255,255,255,0.12);
+color:white;
+backdrop-filter:blur(10px);
+transition:all 0.25s ease;
+}
+
+.tier-buttons button:hover{
+transform:translateY(-3px);
+background:white;
+color:black;
+}
+
+/* PREVIEW CARD */
+
+.preview{
+margin-top:40px;
+width:80%;
+max-width:900px;
+border-radius:20px;
+padding:40px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(18px);
+box-shadow:0 10px 40px rgba(0,0,0,0.35);
+transition:all 0.4s;
+}
+
+.preview h2{
+font-size:32px;
+margin-bottom:15px;
+}
+
+.preview p{
+opacity:0.9;
+margin-bottom:25px;
+font-size:17px;
+}
+
+/* BENEFITS GRID */
+
+.benefits{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-bottom:25px;
+}
+
+.benefit{
+background:rgba(255,255,255,0.08);
+padding:12px;
+border-radius:10px;
+font-size:15px;
+}
+
+/* CTA */
+
+.cta{
+display:inline-block;
+padding:12px 26px;
+border-radius:30px;
+background:white;
+color:black;
+font-weight:600;
+text-decoration:none;
+transition:all 0.25s;
+}
+
+.cta:hover{
+transform:scale(1.05);
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.hero h1{
+font-size:34px;
+}
+
+.preview{
+width:90%;
+}
+
+.benefits{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
-  <nav id="navbar">
-    <div class="logo">PremiumDemo</div>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#products">Products</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<div class="hero">
 
-  <section id="home">
-    <div>
-      <h1>Welcome to PremiumDemo</h1>
-      <p>Modern Apple-style navigation and smooth animations to impress clients.</p>
-      <a href="#products" class="btn">See Products</a>
-    </div>
-  </section>
+<h1>Explore Website Options</h1>
 
-  <section id="products">
-    <div>
-      <h1>Our Products</h1>
-      <p>Showcase items beautifully with fade-in animations and big visuals.</p>
-      <a href="#about" class="btn">Learn More</a>
-    </div>
-  </section>
+<p>Select an option below to see what might fit your business best.</p>
 
-  <section id="about">
-    <div>
-      <h1>About Us</h1>
-      <p>This is a sleek, professional demo site that can make clients consider paying $1500+</p>
-      <a href="#contact" class="btn">Contact Us</a>
-    </div>
-  </section>
+<div class="tier-buttons">
 
-  <section id="contact">
-    <div>
-      <h1>Contact</h1>
-      <p>Include a simple form or contact info here to finalize the demo.</p>
-      <a href="#home" class="btn">Back to Top</a>
-    </div>
-  </section>
+<button onclick="showTier('starter')">Starter</button>
+<button onclick="showTier('business')">Business</button>
+<button onclick="showTier('professional')">Professional</button>
+<button onclick="showTier('custom')">Custom</button>
 
-  <script>
-    // Shrink nav on scroll
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if(window.scrollY > 50) navbar.classList.add('shrink');
-      else navbar.classList.remove('shrink');
-    });
+</div>
 
-    // Fade-in sections
-    const sections = document.querySelectorAll('section');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.1 });
-    sections.forEach(section => observer.observe(section));
-  </script>
+</div>
+
+
+<div class="preview" id="preview">
+
+<h2>Starter Website</h2>
+
+<p>A great starting point for new businesses that want a clean and reliable online presence.</p>
+
+<div class="benefits">
+
+<div class="benefit">Help customers find your business online</div>
+<div class="benefit">Mobile-friendly design</div>
+<div class="benefit">Clear contact section</div>
+<div class="benefit">Simple, clean layout</div>
+
+</div>
+
+<a class="cta">Typical investment: $100+</a>
+
+</div>
+
+
+
+<script>
+
+const tiers={
+
+starter:{
+title:"Starter Website",
+desc:"A great starting point for new businesses that want a clean and reliable online presence.",
+benefits:[
+"Help customers find your business online",
+"Mobile-friendly design",
+"Clear contact section",
+"Simple, clean layout"
+],
+price:"Typical investment: $100+"
+},
+
+business:{
+title:"Business Website",
+desc:"Ideal for growing businesses that want to present their services professionally.",
+benefits:[
+"Multiple pages for services",
+"Professional brand presentation",
+"Customer contact forms",
+"Better credibility for your business"
+],
+price:"Typical investment: $250+"
+},
+
+professional:{
+title:"Professional Website",
+desc:"Designed for businesses ready to stand out with a modern and engaging website.",
+benefits:[
+"Custom layout design",
+"Smooth animations and modern UI",
+"Service or product showcases",
+"Stronger brand impression"
+],
+price:"Typical investment: $450+"
+},
+
+custom:{
+title:"Custom Website",
+desc:"A fully tailored website designed around your business goals and unique needs.",
+benefits:[
+"Completely custom design",
+"Advanced features or integrations",
+"Built for long-term growth",
+"Highly polished user experience"
+],
+price:"Typical investment: $800+"
+}
+
+};
+
+
+function showTier(tier){
+
+const data=tiers[tier];
+
+let benefitHTML="";
+
+data.benefits.forEach(b=>{
+benefitHTML+=`<div class="benefit">${b}</div>`;
+});
+
+document.getElementById("preview").innerHTML=`
+
+<h2>${data.title}</h2>
+
+<p>${data.desc}</p>
+
+<div class="benefits">
+${benefitHTML}
+</div>
+
+<a class="cta">${data.price}</a>
+
+`;
+
+}
+
+</script>
 
 </body>
 </html>
+```
